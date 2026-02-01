@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Special Surprise 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: #ffb6c1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+/* 🐮 Animated Cow */
+.cow {
+  width: 120px;
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translate(-50%,0); }
+  50% { transform: translate(-50%,-15px); }
+}
+
+.envelope {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #ff2f68;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e0255a;
+}
+
+.hidden {
+  display: none;
+}
+
+img {
+  width: 90%;
+  max-width: 280px;
+  border-radius: 20px;
+}
+
+/* 💋 Kiss animation */
+.kiss {
+  position: absolute;
+  font-size: 24px;
+  animation: floatUp 1.5s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-60px); }
+}
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Page 1 -->
+    <div id="page1">
+      <img class="cow" src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cow_cartoon.svg" alt="Cute Cow" onclick="popMultipleKisses(event)">
+      <div class="envelope">
+        <h2>For Monisha 💖</h2>
+        <p>You’re special to me!</p>
+        <button onclick="showPage2()">Open Surprise</button>
+      </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div id="page2" class="hidden">
+      <h1>Get ready for a ride 💕</h1>
+      <img src="https://media.giphy.com/media/l0MYC0LajbaPoEADu/giphy.gif" alt="Fun GIF">
+      <button onclick="showPage1()">Back</button>
+    </div>
+  </div>
+
+<script>
+function showPage2() {
+  document.getElementById('page1').classList.add('hidden');
+  document.getElementById('page2').classList.remove('hidden');
+}
+function showPage1() {
+  document.getElementById('page2').classList.add('hidden');
+  document.getElementById('page1').classList.remove('hidden');
+}
+
+// 💋 Multiple kisses popup on cow click
+function popMultipleKisses(e) {
+  const rect = e.target.getBoundingClientRect();
+  for (let i = 0; i < 5; i++) { // 5 kisses burst
+    const kiss = document.createElement('div');
+    kiss.className = 'kiss';
+    kiss.innerText = '💋';
+    document.body.appendChild(kiss);
+
+    // Random horizontal offset
+    const offsetX = (Math.random() - 0.5) * 60;
+    kiss.style.left = rect.left + rect.width/2 + offsetX + 'px';
+    kiss.style.top = rect.top + 'px';
+
+    // Remove after animation
+    setTimeout(() => kiss.remove(), 1500);
+  }
+}
+</script>
+</body>
+</html>
