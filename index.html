@@ -14,11 +14,12 @@
     <button onclick="goToPage(2)">Next ➡️</button>
   </div>
 
-  <!-- Second Page (your heart/kisses logic) -->
+  <!-- Second Page with Yes/No Choice -->
   <div class="page page2">
-    <h2>Tap the heart 💖</h2>
-    <div id="heart">❤️</div>
-    <button onclick="goToPage(3)">Reveal ➡️</button>
+    <h2>Will you be my Valentine? 💌</h2>
+    <button onclick="goToPage(3)">Yes 💖</button>
+    <button onclick="playfulNo()">No 🙈</button>
+    <p id="noResponse"></p>
   </div>
 
   <!-- Third Page with Zootopia GIF -->
@@ -33,10 +34,13 @@
       document.querySelector('.page' + pageNumber).style.display = 'block';
     }
 
+    function playfulNo() {
+      const msg = document.getElementById("noResponse");
+      msg.textContent = "Oops, that’s not allowed 😜 Try again!";
+    }
+
     // Start on page 1
     goToPage(1);
   </script>
 </body>
 </html>
-
-
