@@ -46,7 +46,7 @@ button.choice:hover {
 .envelope {
   position: relative;
   width: 500px;   /* increased width */
-  height: 350px;  /* increased height */
+  height: 600px;  /* increased height */
   margin: 40px auto;
   background: #fff;
   border: 2px solid #ff69b4;
