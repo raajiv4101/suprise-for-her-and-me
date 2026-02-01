@@ -45,12 +45,12 @@ button.choice:hover {
 /* Envelope effect */
 .envelope {
   position: relative;
-  width: 300px;
-  height: 200px;
+  width: 500px;   /* increased width */
+  height: 350px;  /* increased height */
   margin: 40px auto;
   background: #fff;
   border: 2px solid #ff69b4;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
