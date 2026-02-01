@@ -1,3 +1,10 @@
+.intro {
+  font-style: italic;
+  color: #d6006e;   /* romantic pink/red */
+  margin-top: 10px;
+  font-size: 18px;
+  text-align: center;
+}
 body {
   font-family: Arial, sans-serif;
   text-align: center;
