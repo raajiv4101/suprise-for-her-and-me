@@ -28,6 +28,46 @@ button {
   line-height: 1.6;
 }
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Message</title>
+  <style>
+    body {
+      background-color: #fdf6f6; /* soft background */
+      font-family: "Georgia", serif; /* elegant font */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* full screen height */
+      margin: 0;
+    }
+    p {
+      max-width: 600px;
+      text-align: center;
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #333;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    strong {
+      color: #d6336c; /* highlight bold words in romantic pink */
+    }
+  </style>
+</head>
+<body>
+  <p>
+    I will <strong>choose you</strong>, even when you make me mad. My love for you won't fade simply because we are angry. 
+    I know we will <strong>fight</strong>, we will be <strong>frustrated</strong>, we will be human. Still, I will go to battle for you. 
+    Still, I will <strong>choose you</strong>. I will <strong>choose you</strong>. And <strong>keep choosing</strong> you, every single day. ☺
+  </p>
+</body>
+</html>
+
 /* Envelope effect */
 .envelope {
   position: relative;
