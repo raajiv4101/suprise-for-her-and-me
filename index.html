@@ -25,8 +25,8 @@ body {
   padding: 20px;
 }
 
-/* 🐮 Animated Cow */
-.cow {
+/* ❤️ Animated Heart */
+.heart {
   width: 120px;
   position: absolute;
   top: -120px;
@@ -73,16 +73,34 @@ img {
   border-radius: 20px;
 }
 
-/* 💋 Kiss animation */
-.kiss {
+/* 💖 Heart burst animation */
+.burst-heart {
   position: absolute;
   font-size: 24px;
-  animation: floatUp 1.5s ease-out forwards;
+  animation: floatUp 2s ease-out forwards;
 }
 
 @keyframes floatUp {
   0% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(-60px); }
+  100% { opacity: 0; transform: translateY(-100px); }
+}
+
+/* Big heart button */
+.big-heart-btn {
+  font-size: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ✨ Fade-in effect for Page 3 */
+.fade-in {
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 </style>
 </head>
@@ -91,19 +109,32 @@ img {
   <div class="container">
     <!-- Page 1 -->
     <div id="page1">
-      <img class="cow" src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cow_cartoon.svg" alt="Cute Cow" onclick="popMultipleKisses(event)">
+      <img class="heart" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Red_Heart.svg" alt="Heart" onclick="popKisses(event)">
       <div class="envelope">
         <h2>For Monisha 💖</h2>
-        <p>You’re special to me!</p>
+        <p>Will you be my Valentine?</p>
         <button onclick="showPage2()">Open Surprise</button>
       </div>
     </div>
 
     <!-- Page 2 -->
     <div id="page2" class="hidden">
-      <h1>Get ready for a ride 💕</h1>
-      <img src="https://media.giphy.com/media/l0MYC0LajbaPoEADu/giphy.gif" alt="Fun GIF">
-      <button onclick="showPage1()">Back</button>
+      <h2>My Dearest Monisha 💕</h2>
+      <p>You make my world brighter every single day. Your smile is my sunshine, your laughter my favorite melody. I can’t imagine this journey without you. Will you be my Valentine?</p>
+      <button onclick="valentineYes()">Yes 💖</button>
+      <button onclick="valentineNo()">No 💔</button>
+    </div>
+
+    <!-- Page 2b (No clicked) -->
+    <div id="page2b" class="hidden">
+      <h2>Don’t break my heart bubu 💔</h2>
+      <button class="big-heart-btn" onclick="valentineYes()">❤️ YES ❤️</button>
+    </div>
+
+    <!-- Page 3 -->
+    <div id="page3" class="hidden">
+      <h1>Get ready for a romantic ride…</h1>
+      <h2>Welcome into my heart 💞</h2>
     </div>
   </div>
 
@@ -112,29 +143,55 @@ function showPage2() {
   document.getElementById('page1').classList.add('hidden');
   document.getElementById('page2').classList.remove('hidden');
 }
-function showPage1() {
+
+function valentineYes() {
+  // Burst of hearts
+  for (let i = 0; i < 20; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'burst-heart';
+    heart.innerText = '💖';
+    document.body.appendChild(heart);
+
+    const x = window.innerWidth/2 + (Math.random()-0.5)*200;
+    const y = window.innerHeight/2;
+    heart.style.left = x + 'px';
+    heart.style.top = y + 'px';
+
+    setTimeout(() => heart.remove(), 2000);
+  }
+
+  // Transition after 5 seconds with fade-in
   document.getElementById('page2').classList.add('hidden');
-  document.getElementById('page1').classList.remove('hidden');
+  document.getElementById('page2b').classList.add('hidden');
+  setTimeout(() => {
+    const page3 = document.getElementById('page3');
+    page3.classList.remove('hidden');
+    page3.classList.add('fade-in');
+  }, 5000);
 }
 
-// 💋 Multiple kisses popup on cow click
-function popMultipleKisses(e) {
-  const rect = e.target.getBoundingClientRect();
-  for (let i = 0; i < 5; i++) { // 5 kisses burst
+function valentineNo() {
+  document.getElementById('page2').classList.add('hidden');
+  document.getElementById('page2b').classList.remove('hidden');
+}
+
+// 💋 Kisses popup on heart click (Page 1)
+function popKisses(e) {
+  for (let i = 0; i < 5; i++) {
     const kiss = document.createElement('div');
-    kiss.className = 'kiss';
+    kiss.className = 'burst-heart';
     kiss.innerText = '💋';
     document.body.appendChild(kiss);
 
-    // Random horizontal offset
+    const rect = e.target.getBoundingClientRect();
     const offsetX = (Math.random() - 0.5) * 60;
     kiss.style.left = rect.left + rect.width/2 + offsetX + 'px';
     kiss.style.top = rect.top + 'px';
 
-    // Remove after animation
     setTimeout(() => kiss.remove(), 1500);
   }
 }
 </script>
 </body>
 </html>
+
