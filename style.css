@@ -21,6 +21,12 @@ button {
   background: #ff69b4;
   color: white;
 }
+.cowmoon {
+  font-style: italic;
+  color: #8b0000; /* deep romantic red */
+  margin-top: 15px;
+  line-height: 1.6;
+}
 
 /* Envelope effect */
 .envelope {
