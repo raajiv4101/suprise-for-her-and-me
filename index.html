@@ -30,8 +30,8 @@
           Guiding my heart to where you reside… 🌙❤️
         </p>
         <h2>Will you be my Valentine?</h2>
-        <button onclick="yesEffect()">Yes 💖</button>
-        <button onclick="noEffect()">No 🙈</button>
+        <button class="choice" onclick="yesEffect()">Yes 💖</button>
+        <button class="choice" onclick="noEffect()">No 🐄</button>
         <p id="noResponse"></p>
       </div>
     </div>
@@ -74,7 +74,7 @@
       const broken = document.createElement("div");
       broken.className = "broken-heart";
       container.appendChild(broken);
-      document.getElementById("noResponse").textContent = "Oops, that’s not allowed 😜 Try again!";
+      document.getElementById("noResponse").textContent = "🐄 Oops that’s not allowed bubu, try again!";
     }
 
     // Start on page 1
