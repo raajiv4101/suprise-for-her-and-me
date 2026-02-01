@@ -1,197 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Special Surprise 💖</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: #ffb6c1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-}
-
-.container {
-  position: relative;
-  text-align: center;
-  width: 100%;
-  max-width: 400px;
-  padding: 20px;
-}
-
-/* ❤️ Animated Heart */
-.heart {
-  width: 120px;
-  position: absolute;
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: bounce 2s infinite;
-  cursor: pointer;
-}
-
-@keyframes bounce {
-  0%,100% { transform: translate(-50%,0); }
-  50% { transform: translate(-50%,-15px); }
-}
-
-.envelope {
-  background: white;
-  padding: 30px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-button {
-  margin-top: 20px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  background: #ff2f68;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #e0255a;
-}
-
-.hidden {
-  display: none;
-}
-
-img {
-  width: 90%;
-  max-width: 280px;
-  border-radius: 20px;
-}
-
-/* 💖 Heart burst animation */
-.burst-heart {
-  position: absolute;
-  font-size: 24px;
-  animation: floatUp 2s ease-out forwards;
-}
-
-@keyframes floatUp {
-  0% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(-100px); }
-}
-
-/* Big heart button */
-.big-heart-btn {
-  font-size: 40px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-/* ✨ Fade-in effect for Page 3 */
-.fade-in {
-  animation: fadeIn 2s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine Surprise</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <div class="container">
-    <!-- Page 1 -->
-    <div id="page1">
-      <img class="heart" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Red_Heart.svg" alt="Heart" onclick="popKisses(event)">
-      <div class="envelope">
-        <h2>For Monisha 💖</h2>
-        <p>Will you be my Valentine?</p>
-        <button onclick="showPage2()">Open Surprise</button>
-      </div>
-    </div>
-
-    <!-- Page 2 -->
-    <div id="page2" class="hidden">
-      <h2>My Dearest Monisha 💕</h2>
-      <p>You make my world brighter every single day. Your smile is my sunshine, your laughter my favorite melody. I can’t imagine this journey without you. Will you be my Valentine?</p>
-      <button onclick="valentineYes()">Yes 💖</button>
-      <button onclick="valentineNo()">No 💔</button>
-    </div>
-
-    <!-- Page 2b (No clicked) -->
-    <div id="page2b" class="hidden">
-      <h2>Don’t break my heart bubu 💔</h2>
-      <button class="big-heart-btn" onclick="valentineYes()">❤️ YES ❤️</button>
-    </div>
-
-    <!-- Page 3 -->
-    <div id="page3" class="hidden">
-      <h1>Get ready for a romantic ride…</h1>
-      <h2>Welcome into my heart 💞</h2>
-    </div>
+  <!-- First Page with Cow GIF -->
+  <div class="page page1">
+    <img src="cow.gif" alt="Cute Cow Hugging Heart" class="cow-gif" />
+    <h1>Welcome, Monisha ❤️</h1>
+    <button onclick="goToPage(2)">Next ➡️</button>
   </div>
 
-<script>
-function showPage2() {
-  document.getElementById('page1').classList.add('hidden');
-  document.getElementById('page2').classList.remove('hidden');
-}
+  <!-- Second Page (your heart/kisses logic) -->
+  <div class="page page2">
+    <h2>Tap the heart 💖</h2>
+    <div id="heart">❤️</div>
+    <button onclick="goToPage(3)">Reveal ➡️</button>
+  </div>
 
-function valentineYes() {
-  // Burst of hearts
-  for (let i = 0; i < 20; i++) {
-    const heart = document.createElement('div');
-    heart.className = 'burst-heart';
-    heart.innerText = '💖';
-    document.body.appendChild(heart);
+  <!-- Third Page with Zootopia GIF -->
+  <div class="page page3">
+    <img src="zootopia.gif" alt="Nick & Judy from Zootopia" class="zootopia-gif" />
+    <p>Here’s a magical surprise just for you…</p>
+  </div>
 
-    const x = window.innerWidth/2 + (Math.random()-0.5)*200;
-    const y = window.innerHeight/2;
-    heart.style.left = x + 'px';
-    heart.style.top = y + 'px';
+  <script>
+    function goToPage(pageNumber) {
+      document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+      document.querySelector('.page' + pageNumber).style.display = 'block';
+    }
 
-    setTimeout(() => heart.remove(), 2000);
-  }
-
-  // Transition after 5 seconds with fade-in
-  document.getElementById('page2').classList.add('hidden');
-  document.getElementById('page2b').classList.add('hidden');
-  setTimeout(() => {
-    const page3 = document.getElementById('page3');
-    page3.classList.remove('hidden');
-    page3.classList.add('fade-in');
-  }, 5000);
-}
-
-function valentineNo() {
-  document.getElementById('page2').classList.add('hidden');
-  document.getElementById('page2b').classList.remove('hidden');
-}
-
-// 💋 Kisses popup on heart click (Page 1)
-function popKisses(e) {
-  for (let i = 0; i < 5; i++) {
-    const kiss = document.createElement('div');
-    kiss.className = 'burst-heart';
-    kiss.innerText = '💋';
-    document.body.appendChild(kiss);
-
-    const rect = e.target.getBoundingClientRect();
-    const offsetX = (Math.random() - 0.5) * 60;
-    kiss.style.left = rect.left + rect.width/2 + offsetX + 'px';
-    kiss.style.top = rect.top + 'px';
-
-    setTimeout(() => kiss.remove(), 1500);
-  }
-}
-</script>
+    // Start on page 1
+    goToPage(1);
+  </script>
 </body>
 </html>
+
 
