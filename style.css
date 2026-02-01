@@ -11,46 +11,26 @@ body {
   padding: 20px;
 }
 
-button.choice {
+button {
   margin: 10px;
-  padding: 12px 24px;
-  font-size: 18px;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
   border: none;
   border-radius: 8px;
   background: #ff69b4;
   color: white;
-  animation: bounceIn 1s ease;
-  transition: transform 0.2s ease;
-}
-
-button.choice:hover {
-  transform: scale(1.1);
-  background: #ff1493;
-}
-
-@keyframes bounceIn {
-  0% { transform: scale(0.5); opacity: 0; }
-  60% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); }
-}
-
-.poem {
-  font-style: italic; /* handwritten feel */
-  color: #d6006e;
-  margin-bottom: 20px;
-  line-height: 1.6;
 }
 
 /* Envelope effect */
 .envelope {
   position: relative;
-  width: 500px;   /* increased width */
-  height: 600px;  /* increased height */
+  width: 300px;
+  height: 200px;
   margin: 40px auto;
   background: #fff;
   border: 2px solid #ff69b4;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
 }
 
@@ -72,7 +52,8 @@ button.choice:hover {
   height: 100%;
   padding: 20px;
   box-sizing: border-box;
-  opacity: 1; /* Always visible now */
+  opacity: 0;
+  animation: revealLetter 2s 1s forwards;
 }
 
 @keyframes openFlap {
@@ -80,57 +61,13 @@ button.choice:hover {
   100% { transform: rotateX(-120deg); }
 }
 
+@keyframes revealLetter {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
 #noResponse {
   margin-top: 15px;
   font-style: italic;
   color: #ff1493;
-}
-
-/* Heart burst effect */
-#effect-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.heart {
-  position: absolute;
-  bottom: 0;
-  font-size: 24px;
-  color: red;
-  animation: floatUp 2s ease-out forwards;
-}
-
-.heart::before {
-  content: "❤️";
-}
-
-@keyframes floatUp {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-200px); opacity: 0; }
-}
-
-/* Broken heart effect */
-.broken-heart {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 48px;
-  transform: translate(-50%, -50%);
-  animation: shake 0.5s infinite;
-}
-
-.broken-heart::before {
-  content: "💔";
-}
-
-@keyframes shake {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  25% { transform: translate(-50%, -50%) rotate(-10deg); }
-  50% { transform: translate(-50%, -50%) rotate(10deg); }
-  75% { transform: translate(-50%, -50%) rotate(-10deg); }
-  100% { transform: translate(-50%, -50%) rotate(0deg); }
 }
