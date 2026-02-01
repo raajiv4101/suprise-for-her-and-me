@@ -23,19 +23,12 @@
     <div class="envelope">
       <div class="flap"></div>
       <div class="letter">
-        <p class="poem">
-          In every sunrise, I see your light,<br>
-          In every star, you shine so bright.<br>
-          The moon whispers softly through the night,<br>
-          Guiding my heart to where you reside… 🌙❤️
-        </p>
-        <h2>Will you be my Valentine?</h2>
-        <button class="choice" onclick="yesEffect()">Yes 💖</button>
-        <button class="choice" onclick="noEffect()">No 🐄</button>
+        <h2>Will you be my Valentine? 💌</h2>
+        <button onclick="goToPage(3)">Yes 💖</button>
+        <button onclick="playfulNo()">No 🙈</button>
         <p id="noResponse"></p>
       </div>
     </div>
-    <div id="effect-container"></div>
   </div>
 
   <!-- Third Page -->
@@ -44,7 +37,7 @@
       <div class="flap"></div>
       <div class="letter">
         <h1>🦊🐰 Nick & Judy say hi!</h1>
-        <p>🦊 Nick: “The moon 🌙 may shine above, but my heart ❤️ only glows brighter when it’s with you.”</p>
+        <p>Here’s a magical surprise just for you…</p>
       </div>
     </div>
   </div>
@@ -55,26 +48,9 @@
       document.querySelector('.page' + pageNumber).style.display = 'block';
     }
 
-    function yesEffect() {
-      const container = document.getElementById("effect-container");
-      container.innerHTML = "";
-      for (let i = 0; i < 15; i++) {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.style.left = Math.random() * 100 + "%";
-        heart.style.animationDuration = (1 + Math.random() * 2) + "s";
-        container.appendChild(heart);
-      }
-      setTimeout(() => goToPage(3), 2000);
-    }
-
-    function noEffect() {
-      const container = document.getElementById("effect-container");
-      container.innerHTML = "";
-      const broken = document.createElement("div");
-      broken.className = "broken-heart";
-      container.appendChild(broken);
-      document.getElementById("noResponse").textContent = "🐄 Oops that’s not allowed bubu, try again!";
+    function playfulNo() {
+      const msg = document.getElementById("noResponse");
+      msg.textContent = "Oops, that’s not allowed 😜 Try again!";
     }
 
     // Start on page 1
@@ -82,4 +58,5 @@
   </script>
 </body>
 </html>
+
 
